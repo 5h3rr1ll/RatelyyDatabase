@@ -32,9 +32,11 @@ router.route('/add').post(function (req, res) {
 
   // Defined get specific data by GTIN
   router.route('/:productGTIN').get(function (req, res) {
-    Product.findOne(req.params.productName, function(err, product) {
-      if (!product)
-        return next(new Error("Could not find specific product"));
+    Product.find({"productGTIN": req.params.productGTIN}, function(err, product) {
+      if(err){
+        console.log(err);
+      }
+        // return next(new Error("Could not find specific product"));
       else {
         res.json(product)
       }
