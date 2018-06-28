@@ -5,19 +5,19 @@ const Schema = mongoose.Schema;
 
 // Define collection and schema for Product
 var Product = new Schema({
-  productName: {
+  name: {
     type: String
   },
-  productGTIN: {
+  gtin: {
     type: String
   },
-  productProducer: {
+  producer: {
     type: String
   },
-  productConcern: {
+  concern: {
     type: String
   },
-  productPictureURL: {
+  pictureURL: {
     type: String
   }
 },{

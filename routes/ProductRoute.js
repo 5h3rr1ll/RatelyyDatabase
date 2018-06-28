@@ -31,8 +31,8 @@ router.route('/add').post(function (req, res) {
   });
 
   // Defined get specific data by GTIN
-  router.route('/:productGTIN').get(function (req, res) {
-    Product.find({"productGTIN": req.params.productGTIN}, function(err, product) {
+  router.route('/:gtin').get(function (req, res) {
+    Product.find({"gtin": req.params.gtin}, function(err, product) {
       if(err){
         console.log(err);
       }
@@ -49,11 +49,11 @@ router.route('/add').post(function (req, res) {
       if (!product)
         return next(new Error('Could not load Document'));
       else {
-        product.productName = req.body.productName;
-        product.productGTIN = req.body.productGTIN;
-        product.productProducer = req.body.productProducer;
-        product.productConcern = req.body.productConcern;
-        product.productPictureURL = req.body.productPictureURL;
+        product.name = req.body.name;
+        product.gtin = req.body.gtin;
+        product.producer = req.body.producer;
+        product.concern = req.body.concern;
+        product.pictureURL = req.body.pictureURL;
 
         product.save().then(product => {
             res.json('Successfully Updated');
